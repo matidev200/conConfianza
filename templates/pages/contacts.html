@@ -1,0 +1,46 @@
+{%extends 'base.html'%}
+{% load static %}
+
+{%block sidebar%} {% include 'components/sidebar.html'%} {%endblock%}
+
+{% block view_links %}
+<link rel="stylesheet" href="{% static 'contacts.css' %}">
+<script src="{% static 'js/create_thread.js' %}"></script>
+<script>
+    window.csrf_token = "{{ csrf_token }}";
+</script>
+{%endblock%}
+
+{% block main_content %}
+<p hidden class="user-id" id="{{user.id}}"></p>
+<div class="search-container">
+    <input type="text" class="search-bar" placeholder="Buscar un amigo...">
+    <button class="search-button" data-feather="search"></button>
+</div>
+
+<div class="contacts-container">
+    {% for friend in friends %}
+    {% if friend.user.id == request.user.id %}
+    <div class="contact-bubble">
+        <div class="picture">
+            <img src="{% static friend.user_to_request.profile_img.url %}" class="profile-img">
+        </div>
+        <div class="description">
+            <h3 class="contact-name">{{friend.user_to_request.username}}</h3>
+        </div>
+        <div class="send-msg-friend" id="{{friend.user_to_request.id}}"><button data-feather="send"></button></div>
+    </div>
+    {% else %}
+    <div class="contact-bubble">
+        <div class="picture">
+            <img src="{% static friend.user.profile_img.url %}" class="profile-img">
+        </div>
+        <div class="description">
+            <h3 class="contact-name">{{friend.user.username}}</h3>
+        </div>
+        <div class="send-msg-friend" id="{{friend.user.id}}" ><button data-feather="send"></button></div>
+    </div>
+    {%endif%}
+    {% endfor %}
+</div>
+{% endblock %}

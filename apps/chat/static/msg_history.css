@@ -1,0 +1,33 @@
+.wrapper_inner{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.chat-bubble {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    align-items: center;
+    cursor: pointer;
+    max-width: 300px;
+}
+
+.chat-bubble .send-button {
+    width: 100%;
+    text-align: center;
+}
+
+.chat-bubble .description {
+    text-align: start;
+}
+
+.chat-bubble .picture {
+    padding: 20px;
+}
+
+.chat-bubble img {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+}

@@ -1,0 +1,51 @@
+{%extends 'base.html'%}
+{% load static %}
+
+{%block sidebar%} {% include 'components/sidebar.html'%} {%endblock%}
+
+{% block view_links %}
+
+<link rel="stylesheet" href="{% static 'msg_history.css' %}">
+<script src="{% static 'js/open_msg.js' %}"></script>
+<script>
+    window.csrf_token = "{{ csrf_token }}";
+</script>
+{%endblock%}
+
+{% block main_content %}
+{% if user.is_authenticated %}
+{% for thread in Threads %}
+{% if thread.first_person.id == request.user.id %}
+<div class="chats-container">
+    <div class="chat-bubble">
+        <div class="picture">
+            <img src="{% static  thread.second_person.profile_img.url %}" class="profile-img">
+        </div>
+        <div class="description">
+            <h3 class="contact-name">{{ thread.second_person.username }}</h3>
+            <p class="last-msg">..........</p>
+
+        </div>
+        <div class="send-button" id="{{thread.second_person.id}}"><button data-feather="send"></button>
+        </div>
+    </div>
+</div>
+{%elif thread.second_person.id == request.user.id%}
+<div class="chats-container">
+    <div class="chat-bubble">
+        <div class="picture">
+            <img src="{% static  thread.first_person.profile_img.url %}" class="profile-img">
+        </div>
+        <div class="description">
+            <h3 class="contact-name">{{ thread.first_person.username }}</h3>
+            <p class="last-msg">.............</p>
+
+        </div>
+        <div class="send-button" id="{{thread.first_person.id}}"><button data-feather="send"></button>
+        </div>
+    </div>
+</div>
+{%endif%}
+{%endfor%}
+{%endif%}
+{% endblock %}

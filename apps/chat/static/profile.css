@@ -1,0 +1,70 @@
+/* Estilos para el formulario */
+.profile-fields {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #f6f6f6;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Estilos para el botón */
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #AC7E66;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Estilos para el botón al pasar el mouse */
+button[type="submit"]:hover {
+  background-color: #9e6e54;
+}
+
+/* Estilos para el campo de usuario */
+#id_username {
+  display: block;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Estilos para el mensaje de error del formulario */
+.errorlist {
+  color: red;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+/* Estilos para la imagen de perfil */
+.profile-img{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+
+/* Styles to hide unnecesary fields from django-forms  */
+body > div > main > div > form > p:nth-child(4) {
+  display: none;  
+}
+body > div > main > div > form > p:nth-child(3) > label {
+  display: none;
+}
+
+.helptext{
+  display: none;
+}

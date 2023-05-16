@@ -1,0 +1,75 @@
+.wrapper_inner {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contacts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+}
+
+.contact-bubble {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    align-items: center;
+    gap: 20px;
+    min-width: 300px;
+    max-width: 400px;
+}
+
+.contact-bubble .add-friend {
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+}
+
+.contact-bubble .description {
+    text-align: start;
+}
+
+.contact-bubble .picture {
+    padding: 20px;
+}
+
+.contact-bubble img {
+    height: 90px;
+    width: 93px;
+    border-radius: 50%;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+
+}
+
+.search-container input {
+    padding: 10px;
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.search-container .search-button {
+    border: none;
+    padding: 10px;
+    color: #000;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+}
+
+.send-msg-friend {
+    width: 100%;
+    text-align: center;
+}

@@ -1,0 +1,54 @@
+.wrapper_inner {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.requests-title{
+    font-family:'Dancing Script', cursive;
+    font-size: 2rem;
+}
+
+.contacts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-bubble {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    align-items: center;
+    gap: 20px;
+    min-width: 300px;
+    max-width: 400px;
+}
+.contact-bubble .description {
+    text-align: start;
+}
+
+.contact-bubble .picture {
+    padding: 20px;
+}
+
+.contact-bubble img {
+    height: 90px;
+    width: 93px;
+    border-radius: 50%;
+}
+
+
+.contact-bubble .accept-friend {
+    text-align: center;
+    cursor: pointer;
+    padding: 10px;
+}
+
+
+.contact-bubble .reject-friend {
+    text-align: center;
+    cursor: pointer;
+    padding: 10px;
+
+}

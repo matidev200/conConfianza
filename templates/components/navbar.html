@@ -1,0 +1,10 @@
+<div class="logo"><span data-feather="coffee"></span>conConfianza</div>
+<nav>
+    {% if user.is_authenticated %}
+    <ul>
+        <li><a href="/profile/logout/"><span data-feather="log-out"></span>Salir</a></li>
+        <li><a href="/profile/update" ><span data-feather="user"></span>{{user.username}}</a></li>
+        <input type="hidden" id="user-id" value="{{user.id}}">
+    </ul>
+    {%endif%}
+</nav>

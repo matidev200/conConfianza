@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MatiCoffee</title>
+</head>
+{% block view_links %} {%endblock%}
+
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<link
+  href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito+Sans:wght@200;300;400;900&family=Press+Start+2P&display=swap"
+  rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+
+
+<header>
+
+  <!-- Navbar -->
+  {% include 'components/navbar.html' %}
+
+</header>
+
+<body>
+
+  <div class="wrapper">
+
+    <!-- Main Content -->
+    <main>
+      <div class="wrapper_inner">
+        <form class="login-form" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <img id="page-logo" src="{%static 'src/coffee-logo.png'%}" height="80" width="90" alt="">
+          <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150"
+            required="" id="id_username" placeholder="Tu Nombre...">
+          <input type="password" name="password" autocomplete="current-password" required="" id="id_password"
+            placeholder="Tu Contraseña...">
+          <button type="submit">Ingresar</button>
+          <p class="register-info">
+            Si todavía no tienes una cuenta, puedes registrarte haciendo click <a href="/profile/register">AQUÍ</a>
+          </p>
+        </form>
+        <div class="owner-info">
+          <p>
+            Project by: Matias De Vito. <br> Live chat with contacts using websockets. <br> I want to express my
+            gratitude
+            to The Codrammers, who served as a reference for me to implement websockets in this project. <br> <br> :)
+          </p>
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+</body>
+
+</html>

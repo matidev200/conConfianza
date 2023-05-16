@@ -1,0 +1,32 @@
+{%extends 'base.html'%}
+{% load static %}
+
+{%block sidebar%} {% include 'components/sidebar.html'%} {%endblock%}
+
+{% block view_links %}
+<script>
+    window.csrf_token = "{{ csrf_token }}";
+</script>
+<link rel="stylesheet" href="{% static 'requests.css' %}">
+<script src="{% static 'js/requests.js' %}"></script>
+{%endblock%}
+
+{% block main_content %}
+<p hidden class="user-id" id="{{user.id}}"></p>
+
+<div class="contacts-container">
+    <h2 class="requests-title"> Tus solicitudes de amistad</h2>
+    {% for request_profile in request_profiles %}
+    <div class="contact-bubble">
+        <div class="picture">
+            <img src="{% static request_profile.user.profile_img.url %}" class="profile-img">
+        </div>
+        <div class="description">
+            <h3 class="contact-name">{{request_profile.user}}</h3>
+        </div>
+        <div class="accept-friend" id="{{request_profile.id}}"><button data-feather="user-check"></button></div>
+        <div class="reject-friend" id="{{request_profile.id}}"><button data-feather="user-x"></button></div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block sidebar%} {% include 'components/sidebar.html'%} {%endblock%}
+
+
+{% block view_links %}
+<link rel="stylesheet" href="{% static 'msg.css' %}">
+<script src="{% static '/js/messages.js' %}" type="module"></script>
+{%endblock%}
+
+{% block main_content %}
+{% if request.user.id == thread.first_person.id or thread.second_person.id == request.user.id %}
+<div class="profile-header">
+    <div class="profile">
+        {% if request.user.id == thread.first_person.id %}
+        <img class="photo" src="{% static  thread.second_person.profile_img.url %}" alt="">
+        <div class="name">{{thread.second_person.username}}</div>
+        {% else %}
+        <img class="photo" src="{% static  thread.first_person.profile_img.url %}" alt="">
+        <div class="name">{{thread.first_person.username}}</div>
+        {%endif%}
+    </div>
+</div>
+<span hidden id="{{thread.id}}" class="thread_id"></span>
+{% if request.user.id == thread.first_person.id %}
+<span hidden id="{{thread.second_person.id}}" class="thread_send_to_id"></span>
+{% elif thread.second_person.id == request.user.id %}
+<span hidden id="{{thread.first_person.id}}" class="thread_send_to_id"></span>
+{%else%}
+
+{%endif%}
+
+<div class="msg-sended">
+    {% for msg in msgs %}
+    {% if msg.user.id == request.user.id %}
+    <div class="message-container">
+        <div class="message outgoing">
+            <p class="message-text">{{msg.message}}</p>
+            <span class="message-time">{{msg.timestamp}}</span>
+        </div>
+    </div>
+    {% else %}
+    <div class="message-container">
+        <div class="message">
+            <p class="message-text">{{msg.message}}</p>
+            <span class="message-time">{{msg.timestamp}}</span>
+        </div>
+    </div>
+    {%endif%}
+    {% endfor %}
+</div>
+</div>
+<div class="msg-input">
+    <div class="chatbox">
+        <form id="msg-form">
+            <div class="chat-form">
+                <input type="text" id="msg" name="msg" placeholder="Escribe aquí...">
+                <button type="submit" id="send_msg"><span data-feather="send"></span></button>
+            </div>
+        </form>
+    </div>
+
+</div>
+{%endif%}
+{%endblock%}

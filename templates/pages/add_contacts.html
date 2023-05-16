@@ -1,0 +1,37 @@
+{%extends 'base.html'%}
+{% load static %}
+
+{%block sidebar%} {% include 'components/sidebar.html'%} {%endblock%}
+
+{% block view_links %}
+<script>
+    window.csrf_token = "{{ csrf_token }}";
+</script>
+<link rel="stylesheet" href="{% static 'contacts.css' %}">
+<script src="{% static 'js/add_contact.js' %}"></script>
+{%endblock%}
+
+{% block main_content %}
+<p hidden class="user-id" id="{{user.id}}"></p>
+<div class="search-container">
+    <input type="text" class="search-bar" placeholder="Agregar un amigo...">
+    <button class="search-button" data-feather="search"></button>
+</div>
+
+<div class="contacts-container">
+    {% for user in users %}
+
+    {% if user.1 != request.user.id %}
+    <div class="contact-bubble">
+        <div class="picture">
+            <img src="{% static user.2 %}" class="profile-img">
+        </div>
+        <div class="description">
+            <h3 class="contact-name">{{user.0}}</h3>
+        </div>
+        <div class="add-friend" id="{{user.1}}"><button data-feather="user-plus"></button></div>
+    </div>
+    {%endif%}
+    {% endfor %}
+</div>
+{% endblock %}

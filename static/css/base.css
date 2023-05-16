@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  background-color: rgb(236, 229, 229);
+}
+
+main{
+  width: 100%;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+aside{
+  flex: 1 0 10%;
+}
+
+.wrapper {
+  display: flex;
+  height: 100%;
+}
+
+@media screen and (max-width: 470px) {
+
+  main{
+    margin-top: 70px;
+    padding: 10px;
+  }
+
+  aside {
+    display: none;
+    position: fixed;
+    top: 70px;
+    height: 100%;
+  }
+
+  header {
+    position: fixed;
+    width: 100%;
+  }
+
+  nav {
+    display: none;
+  }
+
+}

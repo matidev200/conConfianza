@@ -1,0 +1,7 @@
+__pycache__
+.env
+/scripts
+staticfiles
+/conConfianza/settings/production.py
+db.sqlite3
+/env

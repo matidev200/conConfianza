@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MatiCoffee</title>
+</head>
+
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<link
+  href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito+Sans:wght@200;300;400;900&family=Press+Start+2P&display=swap"
+  rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+
+
+<header>
+
+  <!-- Navbar -->
+  {% include 'components/navbar.html' %}
+
+</header>
+
+<body>
+
+  <div class="wrapper">
+
+    <!-- Main Content -->
+    <main>
+      <div class="wrapper_inner">
+        <form class="login-form" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <img id="page-logo" src="{%static 'src/coffee-logo.png'%}" height="80" width="90" alt="">
+          <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150"
+            required="" id="id_username" placeholder="Tu Nombre...">
+          <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1"
+            placeholder="Tu Contraseña...">
+          <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2"
+          placeholder="Repite tu contraseña...">
+          <input type="text" name="friend_code" placeholder="Código de amigos" maxlength="20" required="" id="id_friend_code">
+          <button type="submit">Crear Cuenta</button>
+        </form>
+      </div>
+    </main>
+
+  </div>
+
+</body>
+
+</html>

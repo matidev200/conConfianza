@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block sidebar%} {% include 'components/sidebar.html'%} {%endblock%}
+
+{% block view_links %}
+<link rel="stylesheet" href="{% static 'profile.css' %}">
+{%endblock%}
+
+
+{% block main_content %}
+<form class="profile-fields" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="profile-img-container">
+    <label for="id_profile_img">
+	    <img class="profile-img" src="{% static user.profile_img.url %}" alt="Profile Image">
+    </label>
+  </div>
+  {{ form.as_p }}
+  {{ form.avatar }}
+  <button type="submit">Actualizar Perfil</button>
+</form>
+
+{% endblock %}
