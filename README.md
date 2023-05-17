@@ -1,5 +1,6 @@
 # conConfianza - Live chat with django
 Basic web app with Contacts, Profiles, Live Chat and Requests.
+I want to give credit to TheCodrammers for their great help in creating my WebSocket connections.
 
 # Instalation
 
